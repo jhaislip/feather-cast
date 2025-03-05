@@ -5,6 +5,7 @@ Feather-Cast is a command-line tool for capturing RTSP streams, processing the a
 ## Features
 - Captures RTSP streams for real-time audio analysis using `ffmpeg`.
 - Processes audio with `birdnetlib` to detect bird species and filter detections by confidence.
+- Extracts relevant portions of the sample audio for each detection and pieces them together into a single file for playback.
 - Stores detected bird species along with timestamps and audio clips in an SQLite database.
 - Provides a Streamlit-based dashboard for viewing recent detections, including Wikipedia and Wikidata integration for species information.
 
@@ -39,7 +40,9 @@ Optional parameters:
 ```bash
 streamlit run display_streamlit.py
 ```
-This will start the Streamlit web interface for visualizing recent bird detections, enriched with Wikipedia and Wikidata data.
+This will start the Streamlit web interface for visualizing recent bird detections, enriched with Wikipedia and Wikidata data. Users can listen to extracted bird call clips that have been merged from relevant portions of the processed audio.
+
+![Feather-Cast Dashboard](assets/screenshot.jpg)
 
 ## Components
 
@@ -49,6 +52,7 @@ This will start the Streamlit web interface for visualizing recent bird detectio
 ### `processing.py`
 - Runs BirdNET analysis on audio segments.
 - Groups detections by species and merges overlapping detections.
+- Extracts relevant portions of the sample audio for each detection and pieces them together into a single file.
 - Saves processed detections and clipped audio segments.
 
 ### `database.py`
@@ -58,6 +62,7 @@ This will start the Streamlit web interface for visualizing recent bird detectio
 ### `display_streamlit.py`
 - Displays recent bird detections in a Streamlit dashboard.
 - Fetches additional information from Wikipedia and Wikidata.
+- Provides playback of the extracted and merged bird call clips.
 
 ### `run.py`
 - Main script to capture and process RTSP streams.
@@ -80,4 +85,10 @@ Feel free to submit issues and pull requests to enhance Feather-Cast!
 
 ## Author
 [Your Name]
+
+
+
+
+
+
 
