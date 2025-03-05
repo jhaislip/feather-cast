@@ -91,7 +91,6 @@ def process_audio(audio_chunk, sample_duration, clip_save_dir=None, latitude=Non
             clip_path = None
 
         # Save detection info
-        print(f"Detected {common_name} {detection.get('confidence', 0)} confidence ({len(merged_ranges)} segments)")
         results.append({
             "common_name": common_name,
             "scientific_name": detection.get("scientific_name", ""),

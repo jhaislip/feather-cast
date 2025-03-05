@@ -69,7 +69,7 @@ def get_wikidata_info(wikidata_id):
 
     return None
 
-detections = get_recent_detections(limit=25, min_confidence=0.4)
+detections = get_recent_detections(limit=25, min_confidence=0.5)
 
 if not detections:
     st.write("No bird detections in the last 24 hours.")

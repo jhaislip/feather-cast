@@ -33,13 +33,15 @@ def main():
         if audio_data:
             birds = process_audio(audio_data, args.sample_duration, args.clip_save_dir, args.latitude, args.longitude, args.min_confidence)
             for bird in birds:
+                print(f"Detected {bird['common_name']} with {bird['confidence']} confidence")
                 add_detection(bird)
 
-        detections = get_recent_detections(5)
-        for i, (common_name, scientific_name, confidence, label, file_path, start_time, end_time, timestamp) in enumerate(detections):
-            print(f"{i}: {common_name} ({scientific_name}) - Confidence: {confidence:.2f} | File: {file_path} | Time: {start_time}-{end_time} ({timestamp})")
+        # detections = get_recent_detections(5)
+        # for i, (common_name, scientific_name, confidence, label, file_path, start_time, end_time, timestamp) in enumerate(detections):
+        #     print(f"{i}: {common_name} ({scientific_name}) - Confidence: {confidence:.2f} | File: {file_path} | Time: {start_time}-{end_time} ({timestamp})")
 
-        print("----")
+        if len(birds) != 0:
+            print("----")
         time.sleep(1)  # Prevent excessive CPU usage
 
 if __name__ == "__main__":
